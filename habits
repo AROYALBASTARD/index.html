@@ -1,5 +1,5 @@
-<index.html>
-<index.html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,6 +53,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
+            position: relative;
+            z-index: 1;
         }
 
         .header .subtitle {
@@ -60,6 +62,8 @@
             color: #888;
             letter-spacing: 1px;
             text-transform: uppercase;
+            position: relative;
+            z-index: 1;
         }
 
         .container { 
@@ -246,6 +250,7 @@
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
+            flex-wrap: wrap;
         }
 
         #clearScreenshots, #exportData { 
@@ -341,6 +346,7 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            z-index: 1;
         }
 
         .excellence-count {
@@ -363,6 +369,34 @@
         .header.excellence-mode {
             background: linear-gradient(135deg, #003300 0%, #1a4a1a 50%, #2a5a2a 100%) !important;
         }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            
+            table {
+                font-size: 0.8rem;
+            }
+            
+            th, td {
+                padding: 0.5rem 0.25rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .precision-indicator {
+                position: static;
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -380,13 +414,13 @@
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
-                <option value="5">5</option>
+                <option value="5" selected>5</option>
                 <option value="6">6</option>
                 <option value="7">7</option>
                 <option value="8">8</option>
                 <option value="9">9</option>
             </select>
-            <button class="reset-btn" onclick="if(confirm('RESET ALL EXCELLENCE DATA? This action cannot be undone.')) resetForm()">RESET ALL DATA</button>
+            <button class="reset-btn" onclick="resetAll()">RESET ALL DATA</button>
         </div>
 
         <div id="successMessage">EXCELLENCE ACHIEVED • CONTINUE ASCENSION • MAINTAIN MOMENTUM</div>
@@ -418,12 +452,78 @@
                 <td><input type="checkbox" class="checkbox" data-id="orr-9" onchange="saveState()"></td>
                 <td rowspan="7" class="continue-column"><input type="checkbox" class="checkbox" data-id="continue" onchange="showSuccessMessage()"></td>
             </tr>
-            <tr><td>PRECISION ENTRY TIMING</td><td><input type="checkbox" class="checkbox" data-id="eot-1" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="eot-2" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="eot-3" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="eot-4" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="eot-5" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="eot-6" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="eot-7" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="eot-8" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="eot-9" onchange="saveState()"></td></tr>
-            <tr><td>DISCIPLINED EXIT EXECUTION</td><td><input type="checkbox" class="checkbox" data-id="ewd-1" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="ewd-2" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="ewd-3" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="ewd-4" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="ewd-5" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="ewd-6" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="ewd-7" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="ewd-8" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="ewd-9" onchange="saveState()"></td></tr>
-            <tr><td>PLAN-ALIGNED EXECUTION</td><td><input type="checkbox" class="checkbox" data-id="awt-1" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="awt-2" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="awt-3" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="awt-4" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="awt-5" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="awt-6" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="awt-7" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="awt-8" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="awt-9" onchange="saveState()"></td></tr>
-            <tr><td>PRECISION STOP PLACEMENT</td><td><input type="checkbox" class="checkbox" data-id="csp-1" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="csp-2" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="csp-3" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="csp-4" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="csp-5" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="csp-6" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="csp-7" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="csp-8" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="csp-9" onchange="saveState()"></td></tr>
-            <tr><td>CALCULATED POSITION SIZING</td><td><input type="checkbox" class="checkbox" data-id="aps-1" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="aps-2" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="aps-3" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="aps-4" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="aps-5" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="aps-6" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="aps-7" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="aps-8" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="aps-9" onchange="saveState()"></td></tr>
-            <tr><td>PLANNED TRADE EXECUTION</td><td><input type="checkbox" class="checkbox" data-id="tpt-1" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="tpt-2" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="tpt-3" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="tpt-4" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="tpt-5" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="tpt-6" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="tpt-7" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="tpt-8" onchange="saveState()"></td><td><input type="checkbox" class="checkbox" data-id="tpt-9" onchange="saveState()"></td></tr>
+            <tr>
+                <td>PRECISION ENTRY TIMING</td>
+                <td><input type="checkbox" class="checkbox" data-id="eot-1" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="eot-2" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="eot-3" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="eot-4" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="eot-5" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="eot-6" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="eot-7" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="eot-8" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="eot-9" onchange="saveState()"></td>
+            </tr>
+            <tr>
+                <td>DISCIPLINED EXIT EXECUTION</td>
+                <td><input type="checkbox" class="checkbox" data-id="ewd-1" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="ewd-2" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="ewd-3" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="ewd-4" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="ewd-5" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="ewd-6" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="ewd-7" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="ewd-8" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="ewd-9" onchange="saveState()"></td>
+            </tr>
+            <tr>
+                <td>PLAN-ALIGNED EXECUTION</td>
+                <td><input type="checkbox" class="checkbox" data-id="awt-1" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="awt-2" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="awt-3" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="awt-4" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="awt-5" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="awt-6" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="awt-7" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="awt-8" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="awt-9" onchange="saveState()"></td>
+            </tr>
+            <tr>
+                <td>PRECISION STOP PLACEMENT</td>
+                <td><input type="checkbox" class="checkbox" data-id="csp-1" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="csp-2" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="csp-3" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="csp-4" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="csp-5" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="csp-6" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="csp-7" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="csp-8" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="csp-9" onchange="saveState()"></td>
+            </tr>
+            <tr>
+                <td>CALCULATED POSITION SIZING</td>
+                <td><input type="checkbox" class="checkbox" data-id="aps-1" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="aps-2" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="aps-3" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="aps-4" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="aps-5" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="aps-6" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="aps-7" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="aps-8" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="aps-9" onchange="saveState()"></td>
+            </tr>
+            <tr>
+                <td>PLANNED TRADE EXECUTION</td>
+                <td><input type="checkbox" class="checkbox" data-id="tpt-1" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="tpt-2" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="tpt-3" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="tpt-4" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="tpt-5" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="tpt-6" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="tpt-7" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="tpt-8" onchange="saveState()"></td>
+                <td><input type="checkbox" class="checkbox" data-id="tpt-9" onchange="saveState()"></td>
+            </tr>
         </table>
 
         <div id="screenshotSection">
@@ -459,39 +559,40 @@
         <p>© 2025 DELTA AGREEMENT • EXCELLENCE THROUGH PURPOSE • ALL RIGHTS RESERVED</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', loadState);
+        // Global state storage (using memory instead of localStorage for Claude.ai compatibility)
+        let appState = {
+            checkboxes: {},
+            screenshots: [],
+            tradeCount: 5
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadState();
+            updateSummary();
+            checkSuccessMessage();
+        });
 
         function saveState() {
             const checkboxes = document.querySelectorAll('.checkbox');
-            const state = {};
             checkboxes.forEach(cb => {
-                state[cb.getAttribute('data-id')] = cb.checked;
+                appState.checkboxes[cb.getAttribute('data-id')] = cb.checked;
             });
-            // Using memory storage instead of localStorage for Claude.ai compatibility
-            window.positiveReinforcementState = state;
-            saveScreenshots();
+            appState.tradeCount = document.getElementById('tradeCount').value;
             updateSummary();
             updateCount();
         }
 
         function loadState() {
-            if (window.positiveReinforcementState) {
-                const state = window.positiveReinforcementState;
-                const checkboxes = document.querySelectorAll('.checkbox');
-                checkboxes.forEach(cb => {
-                    const id = cb.getAttribute('data-id');
-                    if (state[id] !== undefined) {
-                        cb.checked = state[id];
-                    }
-                });
-            }
-            loadScreenshots();
-            updateCount();
-            checkSuccessMessage();
-            updateSummary();
+            const checkboxes = document.querySelectorAll('.checkbox');
+            checkboxes.forEach(cb => {
+                const id = cb.getAttribute('data-id');
+                if (appState.checkboxes[id] !== undefined) {
+                    cb.checked = appState.checkboxes[id];
+                }
+            });
+            document.getElementById('tradeCount').value = appState.tradeCount;
+            displayScreenshots();
         }
 
         function updateCount() {
@@ -499,7 +600,6 @@
             let count = 0;
             checkboxes.forEach(cb => { if (cb.checked) count++; });
             
-            // Update header to excellence mode based on positive count
             const header = document.querySelector('.header');
             if (count > 5) {
                 header.classList.add('excellence-mode');
@@ -508,16 +608,24 @@
             }
         }
 
-        function resetForm() {
-            if (confirm('CONFIRM: RESET ALL EXCELLENCE DATA? This action is irreversible.')) {
-                document.querySelectorAll('.checkbox').forEach(cb => cb.checked = false);
-                window.positiveReinforcementState = {};
-                document.getElementById('tradeCount').value = '1';
-                document.querySelector('.header').classList.remove('excellence-mode');
-                document.getElementById('successMessage').style.display = 'none';
-                window.positiveReinforcementScreenshots = [];
-                document.getElementById('screenshotContainer').innerHTML = '';
-                updateSummary();
+        function resetAll() {
+            if (confirm('RESET ALL EXCELLENCE DATA? This action cannot be undone.')) {
+                if (confirm('CONFIRM: RESET ALL EXCELLENCE DATA? This action is irreversible.')) {
+                    document.querySelectorAll('.checkbox').forEach(cb => cb.checked = false);
+                    document.getElementById('tradeCount').value = '5';
+                    document.querySelector('.header').classList.remove('excellence-mode');
+                    document.getElementById('successMessage').style.display = 'none';
+                    
+                    // Reset state
+                    appState = {
+                        checkboxes: {},
+                        screenshots: [],
+                        tradeCount: 5
+                    };
+                    
+                    document.getElementById('screenshotContainer').innerHTML = '';
+                    updateSummary();
+                }
             }
         }
 
@@ -529,7 +637,9 @@
 
         function checkSuccessMessage() {
             const continueCheckbox = document.querySelector('[data-id="continue"]');
-            document.getElementById('successMessage').style.display = continueCheckbox.checked ? 'block' : 'none';
+            if (continueCheckbox) {
+                document.getElementById('successMessage').style.display = continueCheckbox.checked ? 'block' : 'none';
+            }
         }
 
         function handleScreenshotUpload(event) {
@@ -538,108 +648,87 @@
                 alert('LIMITATION: Maximum 5 excellence files per upload session.');
                 return;
             }
-            const screenshots = [];
-            const readers = [];
-            for (let file of files) {
+
+            Array.from(files).forEach(file => {
                 const reader = new FileReader();
-                readers.push(reader);
                 reader.onload = function(e) {
-                    screenshots.push({ src: e.target.result, timestamp: new Date().toISOString() });
-                    if (readers.every(r => r.readyState === 2)) {
-                        saveScreenshots(screenshots);
-                        displayScreenshots(screenshots);
-                    }
+                    const screenshot = {
+                        src: e.target.result,
+                        timestamp: new Date().toISOString(),
+                        name: file.name
+                    };
+                    appState.screenshots.push(screenshot);
+                    displayScreenshots();
                 };
                 reader.readAsDataURL(file);
-            }
+            });
         }
 
-        function saveScreenshots(screenshots = null) {
-            if (screenshots) {
-                const existingScreenshots = window.positiveReinforcementScreenshots || [];
-                window.positiveReinforcementScreenshots = [...existingScreenshots, ...screenshots];
-            } else {
-                const currentScreenshots = Array.from(document.querySelectorAll('#screenshotContainer img')).map(img => {
-                    return { src: img.src, timestamp: img.getAttribute('data-timestamp') };
-                });
-                window.positiveReinforcementScreenshots = currentScreenshots;
-            }
-        }
-
-        function loadScreenshots() {
-            if (window.positiveReinforcementScreenshots) {
-                displayScreenshots(window.positiveReinforcementScreenshots);
-            }
-        }
-
-        function displayScreenshots(screenshots) {
+        function displayScreenshots() {
             const container = document.getElementById('screenshotContainer');
             container.innerHTML = '';
-            screenshots.forEach(screenshot => {
+            
+            appState.screenshots.forEach((screenshot, index) => {
+                const div = document.createElement('div');
+                div.style.marginBottom = '1rem';
+                
                 const img = document.createElement('img');
                 img.src = screenshot.src;
-                img.setAttribute('data-timestamp', screenshot.timestamp);
-                const timestamp = document.createElement('small');
-                timestamp.textContent = `Documented: ${new Date(screenshot.timestamp).toLocaleString()}`;
-                timestamp.style.color = '#888';
-                timestamp.style.display = 'block';
-                timestamp.style.marginTop = '0.5rem';
-                const div = document.createElement('div');
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+                img.style.border = '1px solid #444';
+                img.style.borderRadius = '4px';
+                
+                const info = document.createElement('div');
+                info.style.color = '#888';
+                info.style.fontSize = '0.8rem';
+                info.style.marginTop = '0.5rem';
+                info.innerHTML = `
+                    <div>File: ${screenshot.name}</div>
+                    <div>Documented: ${new Date(screenshot.timestamp).toLocaleString()}</div>
+                `;
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'DELETE';
+                deleteBtn.style.marginTop = '0.5rem';
+                deleteBtn.style.padding = '0.3rem 0.6rem';
+                deleteBtn.style.fontSize = '0.7rem';
+                deleteBtn.style.background = 'linear-gradient(135deg, #4a1a1a, #2a0a0a)';
+                deleteBtn.style.border = '1px solid #666';
+                deleteBtn.style.color = 'white';
+                deleteBtn.style.borderRadius = '3px';
+                deleteBtn.style.cursor = 'pointer';
+                deleteBtn.onclick = function() {
+                    appState.screenshots.splice(index, 1);
+                    displayScreenshots();
+                };
+                
                 div.appendChild(img);
-                div.appendChild(timestamp);
+                div.appendChild(info);
+                div.appendChild(deleteBtn);
                 container.appendChild(div);
             });
         }
 
         function clearScreenshots() {
-            window.positiveReinforcementScreenshots = [];
-            document.getElementById('screenshotContainer').innerHTML = '';
+            if (confirm('Clear all excellence documentation?')) {
+                appState.screenshots = [];
+                document.getElementById('screenshotContainer').innerHTML = '';
+            }
         }
 
         function updateSummary() {
-            const checkboxes = document.querySelectorAll('.checkbox');
             const counts = {
-                'orr': 0, 'eot': 0, 'ewd': 0, 'awt': 0, 'csp': 0,
-                'aps': 0, 'tpt': 0
+                'orr': 0, 'eot': 0, 'ewd': 0, 'awt': 0, 'csp': 0, 'aps': 0, 'tpt': 0
             };
-            checkboxes.forEach(cb => {
-                if (cb.checked) {
-                    const habit = cb.getAttribute('data-id').substring(0, 3);
+            
+            Object.keys(appState.checkboxes).forEach(key => {
+                if (appState.checkboxes[key]) {
+                    const habit = key.substring(0, 3);
                     if (counts[habit] !== undefined) {
                         counts[habit]++;
                     }
                 }
             });
-            const maxHabit = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
-            document.getElementById('mostFrequentSuccess').textContent = `Dominant Excellence Pattern: ${getHabitName(maxHabit)} (${counts[maxHabit]} executions)`;
-        }
-
-        function getHabitName(code) {
-            const habits = {
-                'orr': 'Optimal Risk/Reward Execution',
-                'eot': 'Precision Entry Timing',
-                'ewd': 'Disciplined Exit Execution',
-                'awt': 'Plan-Aligned Execution',
-                'csp': 'Precision Stop Placement',
-                'aps': 'Calculated Position Sizing',
-                'tpt': 'Planned Trade Execution'
-            };
-            return habits[code] || 'None';
-        }
-
-        function exportData() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            const element = document.getElementById('screenshotSection');
-            html2canvas(element).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const imgProps = doc.getImageProperties(imgData);
-                const pdfWidth = doc.internal.pageSize.getWidth();
-                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-                doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                doc.save(`delta_excellence_data_${new Date().toISOString().split('T')[0]}.pdf`);
-            });
-        }
-    </script>
-</body>
-</html>
+            
+            const maxHabit = Object.keys(counts).reduce((a, b
